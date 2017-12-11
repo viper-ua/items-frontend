@@ -14,14 +14,14 @@ cd items-frontend
 ```bash
 npm install --save react react-dom react-scripts
 ```
->App is looking for api host at http://localhost:3000. If your host is running on other adddress -  edit `./src/App.js` and change `const apiHost` at line 5 to your hostname:port
 
 - run app
 ```bash
 npm run
 ```
+>App is looking for api host at http://localhost:3000. If your host is running on other adddress -  edit `./src/App.js` and change `const apiHost` at line 5 to point to your http://hostname:port
 
-Open [http://localhost:3001](http://localhost:3001), if not done automatically, to view it in the browser.
+Open [http://localhost:3001](http://localhost:3001) (in most cases done automatically), to view it in the browser.
  
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
