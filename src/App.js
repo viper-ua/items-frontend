@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const apiHost = 'http://localhost:3000';
+
 export class App extends Component {
   render() {
     return (
@@ -11,7 +13,7 @@ export class App extends Component {
           <h1 className="App-title">Built on React</h1>
         </header>
         <p className="App-intro">
-          To get started, push <b>Start Catalog</b> button below.
+          To get started, push <b>Load Categories</b> button below.
         </p>
       </div>
     );
@@ -25,7 +27,7 @@ export class Categories extends React.Component {
   }
 
   getCategories() {
-    const urlToGet = 'http://localhost:3000/categories';
+    const urlToGet = apiHost + '/categories';
     fetch(urlToGet)
     .then(response => { if (response.ok) {
       let jsonResponse = response.json();
@@ -44,7 +46,7 @@ export class Categories extends React.Component {
   }
   
   render() {
-    let buttonText = '>> Start catalog <<'
+    let buttonText = '>> Load Categories <<'
     return (
       <div>
         <button onClick={this.getCategories.bind(this)}>
@@ -65,7 +67,7 @@ class CategoryLink extends React.Component {
   getCategoryItems(id) {
     let categoryItems = [];
     if (this.state.list.length === 0) {
-      const urlToGet = 'http://localhost:3000/categories/' + id;
+      const urlToGet = apiHost + '/categories/' + id;
       fetch(urlToGet)
       .then(response => { if (response.ok) {
         let jsonResponse = response.json();
@@ -106,7 +108,7 @@ class ItemLink extends React.Component {
   getItemProps(id) {
     let itemProps = [];
     if (this.state.list.length === 0) {
-      const urlToGet = 'http://localhost:3000/items/' + id;
+      const urlToGet = apiHost + '/items/' + id;
       fetch(urlToGet)
       .then(response => { if (response.ok) {
         let jsonResponse = response.json();
