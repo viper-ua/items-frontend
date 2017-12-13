@@ -9,7 +9,9 @@ function getJson(urlToGet) {
   .then(response => { if (response.ok) {
     let jsonResponse = response.json();
     return jsonResponse;
-    }})
+    }},
+    response => [{id: 0, name: `Error: ${response.message}`},
+                [{id: 0, name: `Error: ${response.message}`}]])
 };
 
 export class App extends Component {
@@ -39,6 +41,7 @@ export class Categories extends React.Component {
     getJson(urlToGet)
     .then(response => {
       let categories = []
+      console.log(response);
       categories = response.map(
         (category) => (
           <li key={category.id}>
