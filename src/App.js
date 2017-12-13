@@ -4,6 +4,14 @@ import './App.css';
 
 const apiHost = 'http://localhost:3000';
 
+function getJson(urlToGet) {
+  return fetch(urlToGet)
+  .then(response => { if (response.ok) {
+    let jsonResponse = response.json();
+    return jsonResponse;
+    }})
+};
+
 export class App extends Component {
   render() {
     return (
@@ -28,11 +36,7 @@ export class Categories extends React.Component {
 
   getCategories() {
     const urlToGet = apiHost + '/categories';
-    fetch(urlToGet)
-    .then(response => { if (response.ok) {
-      let jsonResponse = response.json();
-      return jsonResponse;
-      }})
+    getJson(urlToGet)
     .then(response => {
       let categories = []
       categories = response.map(
@@ -68,11 +72,7 @@ class CategoryLink extends React.Component {
     let categoryItems = [];
     if (this.state.list.length === 0) {
       const urlToGet = apiHost + '/categories/' + id;
-      fetch(urlToGet)
-      .then(response => { if (response.ok) {
-        let jsonResponse = response.json();
-        return jsonResponse;
-        }})
+      getJson(urlToGet)
       .then(response => {
         categoryItems = response[1].map(
           (item) => (
@@ -109,11 +109,7 @@ class ItemLink extends React.Component {
     let itemProps = [];
     if (this.state.list.length === 0) {
       const urlToGet = apiHost + '/items/' + id;
-      fetch(urlToGet)
-      .then(response => { if (response.ok) {
-        let jsonResponse = response.json();
-        return jsonResponse;
-        }})
+      getJson(urlToGet)
       .then(response => {
         itemProps = (
             <li>
