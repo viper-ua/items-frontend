@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getJson } from './apiHost';
 import { ItemLink } from './ItemLink';
 
@@ -47,3 +48,14 @@ const CategoryLinkDisplay = (props) => {
         </div>
     )
 } 
+
+CategoryLink.propTypes = {
+  categoryName: PropTypes.string.isRequired,
+  categoryId: PropTypes.number.isRequired
+}
+
+CategoryLinkDisplay.propTypes = {
+  categoryName: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  list: PropTypes.array.isRequired
+}

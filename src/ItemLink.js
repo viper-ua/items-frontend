@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getJson } from './apiHost';
 
 export class ItemLink extends React.Component {
@@ -49,3 +50,17 @@ const ItemLinkDisplay = (props) => {
       </div>
   )
 }
+
+ItemLink.propTypes = {
+  name: PropTypes.string.isRequired,
+  itemId: PropTypes.number.isRequired
+};
+
+ItemLinkDisplay.propTypes = {
+  name: PropTypes.string.isRequired,
+  details: PropTypes.shape({
+    description: PropTypes.string,
+    price: PropTypes.price
+  }).isRequired,
+  onClick: PropTypes.func.isRequired
+};
