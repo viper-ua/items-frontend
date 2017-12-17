@@ -55,8 +55,9 @@ a:hover, a:active {
 }
 
 .description {
+  margin-top: 0px;
+  margin-bottom: 0px;
   padding-left: 20px;
-  list-style-type: none;
 }
 
 button {
