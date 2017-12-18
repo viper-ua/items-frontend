@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Categories } from './Categories'
+import { CategoriesContainer } from './Categories'
 
 export class App extends React.Component {
   render() {
@@ -14,7 +14,7 @@ export class App extends React.Component {
         <p className="App-intro">
           <b>Simple client-server catalog</b>
         </p>
-        <Categories />
+        <CategoriesContainer />
       </div>
     );
   }

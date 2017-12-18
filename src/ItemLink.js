@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getJson } from './apiHost';
 
-export class ItemLink extends React.Component {
+export class ItemLinkContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { details: {} };
@@ -24,7 +24,7 @@ export class ItemLink extends React.Component {
   }
 
   render() {
-    return <ItemLinkDisplay
+    return <ItemLink
       name={this.props.name}
       details={this.state.details}
       onClick={this.getItemProps.bind(this, this.props.itemId)}
@@ -32,7 +32,7 @@ export class ItemLink extends React.Component {
   }
 } 
 
-const ItemLinkDisplay = (props) => {
+const ItemLink = (props) => {
   let itemProps = '';
   if (props.details.description !== undefined) {
     itemProps = (
@@ -51,12 +51,12 @@ const ItemLinkDisplay = (props) => {
   )
 }
 
-ItemLink.propTypes = {
+ItemLinkContainer.propTypes = {
   name: PropTypes.string.isRequired,
   itemId: PropTypes.number.isRequired
 };
 
-ItemLinkDisplay.propTypes = {
+ItemLink.propTypes = {
   name: PropTypes.string.isRequired,
   details: PropTypes.shape({
     description: PropTypes.string,

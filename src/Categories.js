@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getJson } from './apiHost';
-import { CategoryLink } from './CategoryLink';
+import { CategoryLinkContainer } from './CategoryLink';
 
-export class Categories extends React.Component {
+export class CategoriesContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { list: [] };
@@ -18,15 +18,15 @@ export class Categories extends React.Component {
   }
   
   render() {
-    return <CategoriesDisplay list={this.state.list} />
+    return <Categories list={this.state.list} />
   }
 }
 
-const CategoriesDisplay = (props) => {
+const Categories = (props) => {
   const categoryList = props.list.map(
     (category) => (
       <li key={category.id}>
-        <CategoryLink
+        <CategoryLinkContainer
           categoryName={category.name}
           categoryId={category.id}
         />
@@ -39,6 +39,6 @@ const CategoriesDisplay = (props) => {
     )
 }
 
-CategoriesDisplay.propTypes = {
+Categories.propTypes = {
   list: PropTypes.array.isRequired
 };

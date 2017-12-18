@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getJson } from './apiHost';
-import { ItemLink } from './ItemLink';
+import { ItemLinkContainer } from './ItemLink';
 
-export class CategoryLink extends React.Component {
+export class CategoryLinkContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { list: [] };
@@ -24,7 +24,7 @@ export class CategoryLink extends React.Component {
   }
 
   render() {
-    return <CategoryLinkDisplay 
+    return <CategoryLink 
       categoryName={this.props.categoryName}
       list={this.state.list}
       onClick={this.getCategoryItems.bind(this, this.props.categoryId)}
@@ -32,11 +32,11 @@ export class CategoryLink extends React.Component {
   }
 }
 
-const CategoryLinkDisplay = (props) => {
+const CategoryLink = (props) => {
   const itemsList = props.list.map(
     (item) => (
       <li key={item.id}>
-        <ItemLink name={item.name} itemId={item.id} />
+        <ItemLinkContainer name={item.name} itemId={item.id} />
       </li>
     ));
   return (
@@ -49,12 +49,12 @@ const CategoryLinkDisplay = (props) => {
     )
 } 
 
-CategoryLink.propTypes = {
+CategoryLinkContainer.propTypes = {
   categoryName: PropTypes.string.isRequired,
   categoryId: PropTypes.number.isRequired
 }
 
-CategoryLinkDisplay.propTypes = {
+CategoryLink.propTypes = {
   categoryName: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   list: PropTypes.array.isRequired
